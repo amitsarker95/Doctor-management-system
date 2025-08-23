@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pdb
+*.egg-info/
+*.egg
+*.log
+
+# Django
+db.sqlite3
+*.sqlite3
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.migrations/
+
+# VS Code
+.vscode/
+
+# Environments
+myenv/
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Others
+*.bak
+*.swp
+*.swo
+*.tmp
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+.cache
+
+# Test
+.tox/
+.nox/
+
+# Pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Static/media
+staticfiles/
+media/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Ignore local settings
+local_settings.py
