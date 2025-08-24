@@ -81,6 +81,12 @@ class HospitalProfile(models.Model):
     def __str__(self):
         return f"Hospital Name : {self.name}"
     
+class Department(models.Model):
+    hospital = models.ForeignKey(HospitalProfile, on_delete=models.CASCADE)
+    name = models.CharField(max_length=155)
+
+    def __str__(self):
+        return f"Department Name : {self.name}"
 class DonorProfile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     city = models.CharField(max_length=255)
