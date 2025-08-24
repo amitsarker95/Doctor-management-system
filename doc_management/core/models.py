@@ -49,3 +49,14 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return f"USER : {self.email}"
+    
+
+class PatientProfile(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    blood_group = models.CharField(max_length=5)
+    location = models.CharField(max_length=255)
+    medical_history = models.TextField(blank=True)
+    history_img = models.ImageField(blank=True)
+
+    def __str__(self):
+        return f"{self.user.email}"
