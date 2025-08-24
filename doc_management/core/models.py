@@ -9,12 +9,12 @@ class CustomUserManager(BaseUserManager):
         if not email:
             raise ValueError("User must need an email..!")
         email = self.normalize_email(email)
-        user = self.model(email, **extra_fields )
+        user = self.model(email=email, **extra_fields )
         user.set_password(password)
         user.save(using=self._db)
         return user
     
-    def create_super_user(self, email, password=None, **extra_fields):
+    def create_superuser(self, email, password=None, **extra_fields):
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
 
@@ -56,7 +56,7 @@ class PatientProfile(models.Model):
     blood_group = models.CharField(max_length=5)
     address = models.CharField(max_length=255)
     medical_history = models.TextField(blank=True)
-    history_img = models.ImageField(blank=True)
+    history_img = models.ImageField(blank=True, null=True, upload_to="Patient_medical_history")
 
     def __str__(self):
         return f"{self.user.email}"
@@ -84,7 +84,7 @@ class HospitalProfile(models.Model):
 class DonorProfile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     city = models.CharField(max_length=255)
-    last_donate = models.DateField()
+    last_donate = models.DateField(null=True, blank=True)
     available = models.BooleanField(default=True)
 
     def __str__(self):
