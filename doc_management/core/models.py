@@ -72,3 +72,15 @@ class DoctorProfile(models.Model):
     def __str__(self):
         return f"{self.user.email}"
     
+
+class HospitalProfile(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    location = models.TextField()
+
+    def __str__(self):
+        return f"Hospital Name : {self.name}"
+    
+
+
+    
