@@ -81,6 +81,14 @@ class HospitalProfile(models.Model):
     def __str__(self):
         return f"Hospital Name : {self.name}"
     
+class DonorProfile(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    city = models.CharField(max_length=255)
+    last_donate = models.DateField()
+    available = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"Donor Name : {self.user.name}"
 
 
     
