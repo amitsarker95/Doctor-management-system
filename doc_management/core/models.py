@@ -27,14 +27,22 @@ class CustomUserManager(BaseUserManager):
     
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
+    ROLE_CHOICES = [
+        ('PATIENT', 'Patient'),
+        ('DOCTOR', 'Doctor'),
+        ('HOSPITAL_ADMIN', 'Hospital Admin'),
+        ('ADMIN', 'Platform Admin'),
+        ('BLOOD_DONOR', 'Blood Donor')
+    ]
     email = models.EmailField(unique=True)
     name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    role = models.CharField(max_length=255, choices=ROLE_CHOICES, default='PATIENT')
 
     objects = CustomUserManager()
 
-    USERNAME_FEILD = 'email'
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [
 
     ]
